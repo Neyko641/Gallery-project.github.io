@@ -1,0 +1,11 @@
+.SearchField {
+    -webkit-appearance: none;
+    border: black solid;
+    outline: none;
+    width: 150px;
+    line-height: 15px;
+    margin-bottom: 15px;
+    margin: 0 auto;
+    display: block;
+  }
+  
