@@ -24,7 +24,7 @@ const App = () => {
     .filter(monster => 
         monster.name
         .toLowerCase()
-        .includes(searchField.toLowerCase()) || monster.username.toLowerCase().includes(searchField.toLowerCase()));
+        .includes(searchField.toLowerCase().trim()) || monster.username.toLowerCase().includes(searchField.toLowerCase().trim()));
     return (  
     <div>
         {

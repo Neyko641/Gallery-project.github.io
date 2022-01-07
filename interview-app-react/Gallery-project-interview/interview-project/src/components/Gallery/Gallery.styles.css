@@ -1,7 +1,7 @@
 .gallery-container {
     display: flex;
     flex-direction: column;
-    background-color: green;
+    background-color: #EEE;
     border: 1px solid grey;
     border-radius: 5px;
     padding: 25px;
