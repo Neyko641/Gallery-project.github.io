@@ -1,11 +1,14 @@
 import React, {useState, useEffect } from 'react';
 import Login from './Login';
+
 import { GalleryListComponent } from './components/Gallery-list/Gallery-list.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component'
 import { NavbarComponent } from './components/Navbar/navbar.component';
+import { useUser } from './Context/user'
 
 const App = () => {
-    const [loginName, setLoginName] = useState('');
+
+    const { user } = useUser();
     const [monsters, setMonster ] = useState([]);
     const [searchField, setFieldData] = useState('');
     useEffect(() => {
@@ -22,14 +25,19 @@ const App = () => {
         monster.name
         .toLowerCase()
         .includes(searchField.toLowerCase()) || monster.username.toLowerCase().includes(searchField.toLowerCase()));
-    return (
+    return (  
     <div>
-        <NavbarComponent loginName={loginName}/>
+        {
+        Object.keys(user).length ? 
+        <>
+        <NavbarComponent loginName={Object.keys(user).length ? user.givenName : ''}/>
         <SearchBoxComponent placeholder='Filter Items' handleChange={handleChange}/>
         <GalleryListComponent monsters={filteredData} setMonster={setMonster}/>
-        <div className="g-signin">
-            <Login handleLogin={setLoginName}/>
-        </div> 
+        </> 
+        : 
+        <div className="Login-button">
+        <Login/>
+        </div> }
     </div>
     );
 }
